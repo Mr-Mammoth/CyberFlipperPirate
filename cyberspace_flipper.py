@@ -43,14 +43,19 @@ def get_replies(token, post_id):
     }, params={"limit": 20})
     return r.json().get("data", [])
 
-def post_reply(token, post_id, content, parent_reply_id=""):
-    r = requests.post(f"{BASE_URL}/replies", headers={
-        "Authorization": f"Bearer {token}"
-    }, json={
+def post_reply(token, post_id, content, parent_reply_id=None):
+    # Post a reply to a post or to another reply
+    payload = {
         "postId": post_id,
         "content": content,
-        "parentReplyId": parent_reply_id
-    })
+    }
+    # Only include parentReplyId if this is a nested reply
+    if parent_reply_id:
+        payload["parentReplyId"] = parent_reply_id
+
+    r = requests.post(f"{BASE_URL}/replies", headers={
+        "Authorization": f"Bearer {token}"
+    }, json=payload)
     return r.status_code == 200
 
 def display_post(post, idx, total):
