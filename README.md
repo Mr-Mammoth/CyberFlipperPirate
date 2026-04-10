@@ -27,6 +27,14 @@ Installation
     source cyberspace-env/bin/activate
     pip install requests
 
+Usage
+  
+    zshcd ~/cyberspace-flipper
+    source cyberspace-env/bin/activate
+    python3 cyberspace_flipper.py
+   
+   You will be prompted for your Cyberspace password.
+   It is not stored anywhere.
 
 Controls
 
