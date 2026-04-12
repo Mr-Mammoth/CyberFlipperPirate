@@ -1,0 +1,9 @@
+App(
+    appid="cyberspace",
+    name="Cyberspace",
+    apptype=FlipperAppType.EXTERNAL,
+    entry_point="cyberspace_app",
+    requires=["gui"],
+    stack_size=4 * 1024,
+    fap_category="Tools",
+)
